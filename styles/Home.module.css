@@ -8,6 +8,14 @@
   height: 100vh;
 }
 
+.container form {
+  text-align: center;
+}
+
+.container textarea {
+  width: 100%;
+  height: 100px;
+}
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -15,6 +23,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.bnt {
+  background-color: dodgerblue;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  padding: 10px 20px;
 }
 
 .footer {
