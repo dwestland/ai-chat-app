@@ -12,8 +12,8 @@ export default function handler(req, res) {
     },
     body: JSON.stringify({
       model: 'text-davinci-003',
-      prompt: `An inspirational message about ${requestText}`,
-      max_tokens: 40,
+      prompt: `Write a 40 word inspirational message about ${requestText}`,
+      max_tokens: 50,
       temperature: 0,
     }),
   }
