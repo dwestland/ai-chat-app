@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-// create a new component that inputs a textarea message then performs a fetch request to localhost:3000/api/hello gets back response as a data.message and displays that message below
 
 export default function Home() {
   const year = new Date().getFullYear()
@@ -21,6 +20,13 @@ export default function Home() {
       .then((data) => setResponse(data.name))
   }
 
+  // const commentEnterSubmit = (e) => {
+  //   if (e.key === 'Enter' && e.shiftKey === false) {
+  //     // const data = { content: e.target.value }
+  //     return handleSubmit(handleSubmit(e))
+  //   }
+  // }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -28,15 +34,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to AI Chat App!</h1>
-        <p className={styles.description}>Get started</p>
+        <h2>Welcome to Rochex.net!</h2>
+        <h1 className={styles.title}>AI Inspiration App</h1>
+        <p className={styles.description}>Tell me what you want to do today</p>
         <form onSubmit={handleSubmit}>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            // onKeyPress={commentEnterSubmit}
           />
           <button type="submit" className={styles.bnt}>
-            Submit
+            Get Inspired
           </button>
         </form>
         <p>{response}</p>
