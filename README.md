@@ -1,5 +1,7 @@
 # ai-chat-app
 
+# Ai Inspirational App
+
 **Start dev:**
 
 ```
