@@ -47,7 +47,7 @@ export default function Home() {
             Get Inspired
           </button>
         </form>
-        <p>{response}</p>
+        <p className={styles.response}>{response}</p>
       </main>
 
       <footer className={styles.footer}>
