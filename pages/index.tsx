@@ -9,21 +9,29 @@ export default function Home() {
   const [response, setResponse] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+  const [isMessageEmpty, setIsMessageEmpty] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setIsLoading(true)
-    fetch('/api/ai-message', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message }),
-    })
-      .then((res) => res.json())
-      .then((data) => setResponse(data.name))
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false))
+    if (message === '') {
+      setIsMessageEmpty(true)
+      // return
+    } else {
+      setIsMessageEmpty(false)
+
+      setIsLoading(true)
+      fetch('/api/ai-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+      })
+        .then((res) => res.json())
+        .then((data) => setResponse(data.name))
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false))
+    }
   }
 
   // const commentEnterSubmit = (e) => {
@@ -51,6 +59,13 @@ export default function Home() {
             onChange={(e) => setMessage(e.target.value)}
             // onKeyPress={commentEnterSubmit}
           />
+          {isMessageEmpty ? (
+            <p className={styles.validationError}>
+              Please tell us what you want to do!
+            </p>
+          ) : (
+            <p className={styles.validationError}>&nbsp;</p>
+          )}
           <button type="submit" className={styles.bnt}>
             Get Inspired
           </button>
