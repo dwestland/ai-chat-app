@@ -13,8 +13,8 @@ export default function handler(req, res) {
     body: JSON.stringify({
       model: 'text-davinci-003',
       prompt: `Write a 40 word inspirational message about ${requestText}`,
-      max_tokens: 50,
-      temperature: 0,
+      max_tokens: 60,
+      temperature: 0.7,
     }),
   }
 

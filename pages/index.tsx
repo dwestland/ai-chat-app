@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const year = new Date().getFullYear()
   const [message, setMessage] = useState('')
   const [response, setResponse] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setIsLoading(true)
     fetch('/api/ai-message', {
       method: 'POST',
       headers: {
@@ -18,6 +22,8 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data) => setResponse(data.name))
+      .catch((err) => setError(err))
+      .finally(() => setIsLoading(false))
   }
 
   // const commentEnterSubmit = (e) => {
@@ -30,12 +36,13 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>AI Chat App</title>
+        <title>AI Inspire Me</title>
       </Head>
 
       <main className={styles.main}>
-        <h2>Welcome to Rochex.net!</h2>
-        <h1 className={styles.title}>AI Inspiration App</h1>
+        <Image src="/lightbulb.png" width={200} height={200} alt="lightbulb" />
+        <h2>Welcome to</h2>
+        <h1 className={styles.title}>Ai Inspire Me.com</h1>
         <p className={styles.description}>Tell me what you want to do today</p>
         <form onSubmit={handleSubmit}>
           <textarea
@@ -47,11 +54,18 @@ export default function Home() {
             Get Inspired
           </button>
         </form>
-        <p className={styles.response}>{response}</p>
+        {isLoading ? (
+          <div className={styles.loading}>
+            <Image src="/loading.gif" width={100} height={100} alt="loading" />
+          </div>
+        ) : (
+          // <h1>Loading...</h1>
+          <p className={styles.response}>{response}</p>
+        )}
       </main>
 
       <footer className={styles.footer}>
-        <p>Copyright &copy; {year}</p>
+        <p>Ai Inspire Me.com &nbsp;&nbsp; &copy; {year}</p>
       </footer>
     </div>
   )
