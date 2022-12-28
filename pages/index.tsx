@@ -54,12 +54,12 @@ export default function Home() {
             Get Inspired
           </button>
         </form>
+        {error && <p className={styles.error}>{error}</p>}
         {isLoading ? (
           <div className={styles.loading}>
             <Image src="/loading.gif" width={100} height={100} alt="loading" />
           </div>
         ) : (
-          // <h1>Loading...</h1>
           <p className={styles.response}>{response}</p>
         )}
       </main>
