@@ -46,6 +46,7 @@ export default function Home() {
         <p className={styles.description}>Tell me what you want to do today</p>
         <form onSubmit={handleSubmit}>
           <textarea
+            placeholder="Go out for coffee with an old friend"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             // onKeyPress={commentEnterSubmit}
