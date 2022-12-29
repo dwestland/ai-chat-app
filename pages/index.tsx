@@ -44,14 +44,14 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>AI Inspire Me</title>
+        <title>Ai Inspire Me</title>
       </Head>
 
       <main className={styles.main}>
         <Image src="/lightbulb.png" width={200} height={200} alt="lightbulb" />
         <h2>Welcome to</h2>
         <h1 className={styles.title}>Ai Inspire Me.com</h1>
-        <p className={styles.description}>Tell me what you want to do today</p>
+        <p className={styles.description}>Tell us what you want to do today</p>
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="Go out for coffee with an old friend"
