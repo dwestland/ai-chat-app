@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -12,6 +12,13 @@ export default function SpeechPage() {
   const [isMessageEmpty, setIsMessageEmpty] = useState(false)
 
   const html = '<span speak="Hello, I am a React component and I can speak!">'
+
+  useEffect(() => {
+    const msg = new SpeechSynthesisUtterance(
+      'Hello, I am a React component and I can speak!'
+    )
+    window.speechSynthesis.speak(msg)
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
